@@ -901,21 +901,18 @@ mixin _$StudentappState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<StudentModel> students) displayAllStudents,
-    required TResult Function(StudentModel student) displaySpecificData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<StudentModel> students)? displayAllStudents,
-    TResult? Function(StudentModel student)? displaySpecificData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<StudentModel> students)? displayAllStudents,
-    TResult Function(StudentModel student)? displaySpecificData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -923,21 +920,18 @@ mixin _$StudentappState {
   TResult map<TResult extends Object?>({
     required TResult Function(StudentInitial value) initial,
     required TResult Function(DisplayAllStudents value) displayAllStudents,
-    required TResult Function(DisplaySpecificData value) displaySpecificData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StudentInitial value)? initial,
     TResult? Function(DisplayAllStudents value)? displayAllStudents,
-    TResult? Function(DisplaySpecificData value)? displaySpecificData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StudentInitial value)? initial,
     TResult Function(DisplayAllStudents value)? displayAllStudents,
-    TResult Function(DisplaySpecificData value)? displaySpecificData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1001,7 +995,6 @@ class _$StudentInitial implements StudentInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<StudentModel> students) displayAllStudents,
-    required TResult Function(StudentModel student) displaySpecificData,
   }) {
     return initial();
   }
@@ -1011,7 +1004,6 @@ class _$StudentInitial implements StudentInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<StudentModel> students)? displayAllStudents,
-    TResult? Function(StudentModel student)? displaySpecificData,
   }) {
     return initial?.call();
   }
@@ -1021,7 +1013,6 @@ class _$StudentInitial implements StudentInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<StudentModel> students)? displayAllStudents,
-    TResult Function(StudentModel student)? displaySpecificData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1035,7 +1026,6 @@ class _$StudentInitial implements StudentInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(StudentInitial value) initial,
     required TResult Function(DisplayAllStudents value) displayAllStudents,
-    required TResult Function(DisplaySpecificData value) displaySpecificData,
   }) {
     return initial(this);
   }
@@ -1045,7 +1035,6 @@ class _$StudentInitial implements StudentInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StudentInitial value)? initial,
     TResult? Function(DisplayAllStudents value)? displayAllStudents,
-    TResult? Function(DisplaySpecificData value)? displaySpecificData,
   }) {
     return initial?.call(this);
   }
@@ -1055,7 +1044,6 @@ class _$StudentInitial implements StudentInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StudentInitial value)? initial,
     TResult Function(DisplayAllStudents value)? displayAllStudents,
-    TResult Function(DisplaySpecificData value)? displaySpecificData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1143,7 +1131,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<StudentModel> students) displayAllStudents,
-    required TResult Function(StudentModel student) displaySpecificData,
   }) {
     return displayAllStudents(students);
   }
@@ -1153,7 +1140,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<StudentModel> students)? displayAllStudents,
-    TResult? Function(StudentModel student)? displaySpecificData,
   }) {
     return displayAllStudents?.call(students);
   }
@@ -1163,7 +1149,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<StudentModel> students)? displayAllStudents,
-    TResult Function(StudentModel student)? displaySpecificData,
     required TResult orElse(),
   }) {
     if (displayAllStudents != null) {
@@ -1177,7 +1162,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult map<TResult extends Object?>({
     required TResult Function(StudentInitial value) initial,
     required TResult Function(DisplayAllStudents value) displayAllStudents,
-    required TResult Function(DisplaySpecificData value) displaySpecificData,
   }) {
     return displayAllStudents(this);
   }
@@ -1187,7 +1171,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StudentInitial value)? initial,
     TResult? Function(DisplayAllStudents value)? displayAllStudents,
-    TResult? Function(DisplaySpecificData value)? displaySpecificData,
   }) {
     return displayAllStudents?.call(this);
   }
@@ -1197,7 +1180,6 @@ class _$DisplayAllStudents implements DisplayAllStudents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StudentInitial value)? initial,
     TResult Function(DisplayAllStudents value)? displayAllStudents,
-    TResult Function(DisplaySpecificData value)? displaySpecificData,
     required TResult orElse(),
   }) {
     if (displayAllStudents != null) {
@@ -1214,146 +1196,5 @@ abstract class DisplayAllStudents implements StudentappState {
   List<StudentModel> get students;
   @JsonKey(ignore: true)
   _$$DisplayAllStudentsCopyWith<_$DisplayAllStudents> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DisplaySpecificDataCopyWith<$Res> {
-  factory _$$DisplaySpecificDataCopyWith(_$DisplaySpecificData value,
-          $Res Function(_$DisplaySpecificData) then) =
-      __$$DisplaySpecificDataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({StudentModel student});
-}
-
-/// @nodoc
-class __$$DisplaySpecificDataCopyWithImpl<$Res>
-    extends _$StudentappStateCopyWithImpl<$Res, _$DisplaySpecificData>
-    implements _$$DisplaySpecificDataCopyWith<$Res> {
-  __$$DisplaySpecificDataCopyWithImpl(
-      _$DisplaySpecificData _value, $Res Function(_$DisplaySpecificData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? student = null,
-  }) {
-    return _then(_$DisplaySpecificData(
-      null == student
-          ? _value.student
-          : student // ignore: cast_nullable_to_non_nullable
-              as StudentModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DisplaySpecificData implements DisplaySpecificData {
-  _$DisplaySpecificData(this.student);
-
-  @override
-  final StudentModel student;
-
-  @override
-  String toString() {
-    return 'StudentappState.displaySpecificData(student: $student)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DisplaySpecificData &&
-            (identical(other.student, student) || other.student == student));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, student);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DisplaySpecificDataCopyWith<_$DisplaySpecificData> get copyWith =>
-      __$$DisplaySpecificDataCopyWithImpl<_$DisplaySpecificData>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<StudentModel> students) displayAllStudents,
-    required TResult Function(StudentModel student) displaySpecificData,
-  }) {
-    return displaySpecificData(student);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<StudentModel> students)? displayAllStudents,
-    TResult? Function(StudentModel student)? displaySpecificData,
-  }) {
-    return displaySpecificData?.call(student);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<StudentModel> students)? displayAllStudents,
-    TResult Function(StudentModel student)? displaySpecificData,
-    required TResult orElse(),
-  }) {
-    if (displaySpecificData != null) {
-      return displaySpecificData(student);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StudentInitial value) initial,
-    required TResult Function(DisplayAllStudents value) displayAllStudents,
-    required TResult Function(DisplaySpecificData value) displaySpecificData,
-  }) {
-    return displaySpecificData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StudentInitial value)? initial,
-    TResult? Function(DisplayAllStudents value)? displayAllStudents,
-    TResult? Function(DisplaySpecificData value)? displaySpecificData,
-  }) {
-    return displaySpecificData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StudentInitial value)? initial,
-    TResult Function(DisplayAllStudents value)? displayAllStudents,
-    TResult Function(DisplaySpecificData value)? displaySpecificData,
-    required TResult orElse(),
-  }) {
-    if (displaySpecificData != null) {
-      return displaySpecificData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DisplaySpecificData implements StudentappState {
-  factory DisplaySpecificData(final StudentModel student) =
-      _$DisplaySpecificData;
-
-  StudentModel get student;
-  @JsonKey(ignore: true)
-  _$$DisplaySpecificDataCopyWith<_$DisplaySpecificData> get copyWith =>
       throw _privateConstructorUsedError;
 }

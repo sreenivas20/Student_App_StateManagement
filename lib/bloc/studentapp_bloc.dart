@@ -6,18 +6,13 @@
 // part 'studentapp_state.dart';
 // part 'studentapp_bloc.freezed.dart';
 
-// class StudentappBloc extends Bloc<StudentappEvent, StudentappState> {
-//   StudentappBloc() : super(StudentappState.initial()) {
-//     on<StudentappEvent>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }
+
 
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 // import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_app_project/db/model/boxes.dart';
 import 'package:student_app_project/db/model/data_model.dart';
@@ -67,5 +62,11 @@ class StudentappBloc extends Bloc<StudentappEvent, StudentappState> {
       }
     });
 
+    // on<Rebuild>((event, emit) {
+    //   final studentData = StudentBox.getStudentData();
+    //   emit(StudentappState.rebuildScreen(studentData as StudentModel));
+    // });
   }
 }
+
+

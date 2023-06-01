@@ -8,6 +8,7 @@ import 'package:student_app_project/bloc/studentapp_bloc.dart';
 import 'package:student_app_project/db/model/data_model.dart';
 import 'package:student_app_project/screen/home/widgets/add_student_widget.dart';
 import 'package:student_app_project/screen/home/widgets/search.dart';
+import 'package:student_app_project/screen/home/widgets/update_student.dart';
 import 'package:student_app_project/screen/home/widgets/view_stdents.dart';
 
 class ListStudentWidget extends StatelessWidget {
@@ -17,20 +18,33 @@ class ListStudentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // getAllStudents();
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 231, 197, 244),
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('Student Info'),
+        backgroundColor: Colors.purple[100],
+        title: const Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: Text(
+            'Student Info',
+            style: TextStyle(fontSize: 26),
+          ),
+        ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => SearchScreen()));
-              },
-              icon: Icon(Icons.search))
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0, left: 15.0),
+            child: IconButton(
+                iconSize: 30,
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (ctx) => SearchScreen()));
+                },
+                icon: const Icon(Icons.search)),
+          )
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(top: 28.0),
           child: BlocBuilder<StudentappBloc, StudentappState>(
             builder: (context, state) {
               if (state is StudentInitial) {
@@ -41,44 +55,100 @@ class ListStudentWidget extends StatelessWidget {
                   return ListView.separated(
                     itemBuilder: (ctx, index) {
                       // final data = studentList[index];
-                      return ListTile(
-                        title: Text(state.students[index].name),
-                        subtitle: Text(state.students[index].age),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (ctx) => StudentView(
-                                        student: StudentModel(
-                                            name: state.students[index].name,
-                                            age: state.students[index].age,
-                                            num: state.students[index].num,
-                                            image: state.students[index].image),
-                                        index: index,
-                                      )));
-                        },
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              FileImage(File(state.students[index].image)),
-                          radius: 30,
-                        ),
-                        trailing: IconButton(
-                            onPressed: () {
-                              ///if (data.id != null) {
-                              deleteAlert(context, index, state.students);
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            right: 15.0, left: 15.0, top: 18),
+                        child: Container(
+                          height: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: const LinearGradient(
+                              colors: [Colors.purple, Colors.blue],
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                            ),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              title: Text(
+                                state.students[index].name,
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              subtitle: Text(state.students[index].age,
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 15)),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (ctx) => StudentView(
+                                              student: StudentModel(
+                                                  name: state
+                                                      .students[index].name,
+                                                  age:
+                                                      state.students[index].age,
+                                                  num:
+                                                      state.students[index].num,
+                                                  image: state
+                                                      .students[index].image),
+                                              index: index,
+                                            )));
+                              },
+                              leading: CircleAvatar(
+                                backgroundImage: FileImage(
+                                    File(state.students[index].image)),
+                                radius: 30,
+                              ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UpdateScreen(
+                                                      data: StudentModel(
+                                                          name: state
+                                                              .students[index]
+                                                              .name,
+                                                          age: state
+                                                              .students[index]
+                                                              .age,
+                                                          num: state
+                                                              .students[index]
+                                                              .num,
+                                                          image: state
+                                                              .students[index]
+                                                              .image),
+                                                      index: index,
+                                                    )));
+                                      },
+                                      icon: Icon(Icons.edit_document)),
+                                  IconButton(
+                                      onPressed: () {
+                                        ///if (data.id != null) {
+                                        deleteAlert(
+                                            context, index, state.students);
 
-                              //   } else {
-                              //print('student id is null unable to delete');
-                              //  }
-                            },
-                            icon: const Icon(
-                              Icons.delete_outline,
-                              color: Colors.red,
-                            )),
+                                        //   } else {
+                                        //print('student id is null unable to delete');
+                                        //  }
+                                      },
+                                      icon: const Icon(
+                                        Icons.delete_outline,
+                                        color: Colors.red,
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       );
                     },
                     separatorBuilder: (ctx, index) {
-                      return const Divider();
+                      return const SizedBox();
                     },
                     itemCount: state.students.length,
                   );
@@ -92,11 +162,13 @@ class ListStudentWidget extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        hoverColor: Colors.black,
+        focusColor: Colors.purple,
         onPressed: () {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => AddStudentWidget()));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

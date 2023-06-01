@@ -43,29 +43,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
     _numController.text = widget.data.num;
   }
 
-  // Future<void> StudentAddBtn(int index) async {
-  //   final _name = _nameController.text.trim();
-  //   final _age = _ageController.text.trim();
-  //   final _number = _numController.text.trim();
-  //   // final _image = imagePath;
-
-  //   if (_name.isEmpty || _age.isEmpty || _number.isEmpty) {
-  //     return;
-  //   }
-  //   print('$_name $_age $_number');
-
-  //   final _students = StudentModel(
-  //     id: index,
-  //     name: _name,
-  //     age: _age,
-  //     num: _number,
-  //     image: imagepath ?? widget.data.image,
-  //   );
-  //   final studentDataB = await Hive.openBox<StudentModel>('student_db1');
-  //   studentDataB.putAt(index, _students);
-  //   getAllStudents();
-  // }
-
   Future<void> takePhoto() async {
     // ignore: non_constant_identifier_names
     final PickedFile =
@@ -83,12 +60,13 @@ class _UpdateScreenState extends State<UpdateScreen> {
         final student = StudentModel(
             name: _nameController.text,
             age: _ageController.text,
-            num: _numController.text,
+            num: _numController.text, 
             image: widget.data.image);
 
         context
             .read<StudentappBloc>()
             .add(UpdateSpecificstudentData(student, widget.index));
+        // context.read<StudentappBloc>().add(Rebuild()); 
         log(_nameController.toString());
         // StudentAddBtn(widget.index);
 

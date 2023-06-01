@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,17 +28,17 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
               child: Stack(children: [
                 CircleAvatar(
                   backgroundImage: imagepath == null
-                      ? AssetImage('assets/pp3.jpg') as ImageProvider
+                      ? AssetImage('assets/student avatar.jpg') as ImageProvider
                       : FileImage(File(imagepath!)),
-                  radius: 75,
+                  radius: 90,
                 ),
                 Positioned(
-                    bottom: 10,
-                    right: 25,
+                    bottom: 20,
+                    right: 40,
                     child: InkWell(
                         child: const Icon(
                           Icons.add_a_photo_outlined,
@@ -54,7 +53,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
               child: TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -68,10 +67,10 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
               child: TextFormField(
                 controller: _ageController,
                 decoration: InputDecoration(
@@ -87,10 +86,10 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
               child: TextFormField(
                 controller: _numController,
                 decoration: InputDecoration(
@@ -104,31 +103,42 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
                 keyboardType: TextInputType.number,
               ),
             ),
-            SizedBox(
-              height: 5,
+            const SizedBox(
+              height: 12,
             ),
-            ElevatedButton.icon(
-              onPressed: () {
-                BlocProvider.of<StudentappBloc>(context).add(AddStudentData( 
-                    StudentModel(
-                        name: _nameController.text,
-                        age: _ageController.text,
-                        num: _numController.text,
-                        image: imagepath!)));
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        60.0), // Adjust the value as needed
+                  ),
+                ),
+                onPressed: () {
+                  BlocProvider.of<StudentappBloc>(context).add(AddStudentData(
+                      StudentModel(
+                          name: _nameController.text,
+                          age: _ageController.text,
+                          num: _numController.text,
+                          image: imagepath!)));
 
                   Navigator.of(context).pop();
-                // }
-              },
-              icon: const Icon(Icons.add),
-              label: Text('Add Student'),
+                  // }
+                },
+                icon: const Icon(
+                  Icons.add,
+                  size: 40,
+                ),
+                label: Text('Add Student'),
+              ),
             )
           ],
         ),
       ),
     );
   }
-
- 
 
   Future<void> takePhoto() async {
     final PickedFile =

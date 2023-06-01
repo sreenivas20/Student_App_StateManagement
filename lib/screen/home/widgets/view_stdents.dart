@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/container.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 import 'package:student_app_project/db/model/data_model.dart';
-import 'package:student_app_project/screen/home/widgets/update_student.dart';
 
 class StudentView extends StatelessWidget {
-  final double coverHeight = 200;
-  final double profileHeight = 160;
+  final double coverHeight = 220;
+  final double profileHeight = 170;
 
   const StudentView(
       {Key? key,
@@ -86,18 +85,18 @@ class StudentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.edit),
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => UpdateScreen(
-                          data: student!,
-                          index: index,
-                        )));
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Icon(Icons.edit),
+        //   onPressed: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => UpdateScreen(
+        //                   data: student!,
+        //                   index: index,
+        //                 )));
+        //   },
+        // ),
         appBar: AppBar(
           title: const Text('Profile'),
           centerTitle: true,

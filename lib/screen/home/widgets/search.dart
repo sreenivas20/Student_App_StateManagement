@@ -1,32 +1,16 @@
 import 'dart:developer';
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_app_project/application/search/search_bloc.dart';
-
-import 'package:student_app_project/db/model/data_model.dart';
 import 'package:student_app_project/screen/home/widgets/view_stdents.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+// ignore: must_be_immutable
+class SearchScreen extends StatelessWidget {
+  SearchScreen({super.key});
 
-  @override
-  State<SearchScreen> createState() => _SearchScreenState();
-}
-
-class _SearchScreenState extends State<SearchScreen> {
   final _searchController = TextEditingController();
 
-  List<StudentModel> studentList =
-      Hive.box<StudentModel>('student_db').values.toList();
-
-  late List<StudentModel> studentDisplay = List<StudentModel>.from(studentList);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +28,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () => clearText(),
-                  ),
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        clearText();
+                        context
+                            .read<SearchBloc>()
+                            .add(const ClearSearchEvent());
+                      }),
                   filled: true,
                   fillColor: const Color.fromRGBO(234, 236, 238, 2),
                   border: OutlineInputBorder(
@@ -57,7 +45,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 onChanged: (value) {
                   if (value.isEmpty) {
                     BlocProvider.of<SearchBloc>(context)
-                    
                         .add(const ClearSearchEvent());
                   }
                   BlocProvider.of<SearchBloc>(context)
@@ -122,16 +109,6 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   // void _searchStudent(String value) {
-  //   // context.read<StudentappBloc>().add(SearchStudent(value));
-
-  //   setState(() {
-  //     studentDisplay = studentList
-  //         .where((element) =>
-  //             element.name.toLowerCase().contains(value.toLowerCase()))
-  //         .toList();
-  //   });
-  // }
-
   void clearText() {
     _searchController.clear();
   }

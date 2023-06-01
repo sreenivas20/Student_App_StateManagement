@@ -35,9 +35,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Login',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.lightGreen,
+          useMaterial3: true,
         ),
-        home: ScreenHome(),
+        home: const ScreenHome(),
       ),
     );
   }

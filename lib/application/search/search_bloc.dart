@@ -22,6 +22,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             .where((element) =>
                 element.name.toLowerCase().contains(event.value.toLowerCase()))
             .toList();
+
         emit(SearchState.loaded(studentList));
       } catch (e) {
         log(e.toString());
@@ -29,7 +30,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
     on<ClearSearchEvent>((event, emit) {
-      emit(const SearchInitial());
+      emit(const SearchState.initial());
     });
   }
 }
